@@ -1,8 +1,8 @@
-# HCA_201
+# HCA_201: Healthcare Data Acquisition and Management 
 
-## In this respository, I have shared some example queries written in the MySQL dialect 
+ ### https://cpe.ucdavis.edu/section/healthcare-data-acquisition-and-management 
 
-## Please use these examples for the assignments
+## In this respository I have shared some example SQL queries written in the MySQL dialect 
 
-### NOTE: I encourage you to use these queries as examples:  edit, test, share, question, learn 
+## Please use these examples for the assignments--but be warned that the examples could have a few bugs and may not always be a clear path to answer every assignment question.  Thus, I encourage you to use these queries as examples:  please edit, test, share, and ask questions!
 
