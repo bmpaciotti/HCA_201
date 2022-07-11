@@ -3,13 +3,13 @@
 
 # Purpose
 
-- Students and other people who review my online profiles sometime ask me advice about careers (e.g., getting a "good" job in analytics) or what types of skill/knowledge they should purpose.
+- Students and other people who review my online profiles sometime ask me advice about careers (e.g., getting a "good" job in analytics) or what types of skill/knowledge they should pursue.
 
-- I decided to start this post to document questions and responses as these come up
+- I decided to start this post to document questions and responses as they come up
 
 ## Disclaimer 
 
-- This is of course just my advice based on my life and my experiences.  I may very well be wrong!  Or maybe my advice does not apply to your sitation!  
+- This is of course just my advice based on my life and my experiences.  I may very well be wrong!  Or maybe my advice does not apply to your situation!  
 
 - But I offer what I believe could help at least some people.  Please respond to me and let me know what you think!
 
@@ -20,7 +20,7 @@
 
 - But of course, I would in general say "yes"!  Analytics skills (especially in healthcare) are still in high demand.  Depending on your existing skills and knowledge, a certificate program could be an good value proposition.  
 
-   - I believe that are UCD program is priced at a reasonable level, and thus you can get knolwedge and proof of the knolwedge without a huge expenditure 
+   - I believe that are UCD program is priced at a reasonable level, and thus you can get knowledge and proof of the knowledge without a huge expenditure 
 
 # What Is the Difference Between Data Scientists and Data Analysts?
 
@@ -41,14 +41,14 @@
 
 # What Do Employers Need?
 
-- Health analytics is a problem orriented field.  Employeers need people who can learn about what problems need to be solved, document possible solutions, and them implement some programming / analytics to help
+- Health analytics is a problem oriented field.  Employers need people who can learn about what problems need to be solved, document possible solutions, and them implement some programming / analytics to help
 
 - Employers do not simply want programmers.  The valuable people are those who can communicate and work in a team to solve problems 
 
-- Often "tech" or "IT" people are not the best communicators, or are not interested to write or respond to questions, concerns, complaints.  If you can write and speak, make sure your interview panel knows this!
+- Often "tech" or "IT" people are not the best communicators, or are not interested in writing or respondings to questions, concerns, complaints.  If you can write and speak, make sure your interview panel knows this!
 
 #  Writing 
 
-- Written communication is critical. Those who can write, will find a niche for themselves in IT and analystics, because the "data gurus" sometimes think the story or the fun is in the data. Nope.  The output is the interpretation of the data, and communicating what was learned, and how data + models can help!
+- Written communication is critical. Those who can write, will find a niche for themselves in IT and analytics, because the "data gurus" sometimes think the story or the fun is in the data. Nope.  The output is the interpretation of the data, and communicating what was learned, and how data + models can help!
 
 
