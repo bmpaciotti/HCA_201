@@ -41,7 +41,7 @@
 
 # What Do Employers Need?
 
-- Health analytics is a problem oriented field.  Employers need people who can learn about what problems need to be solved, document possible solutions, and them implement some programming / analytics to help
+- Health analytics is a problem oriented field.  Employers need people who can learn about what problems need to be solved, document possible solutions, and then implement some programming / analytics to help
 
 - Employers do not simply want programmers.  The valuable people are those who can communicate and work in a team to solve problems 
 
