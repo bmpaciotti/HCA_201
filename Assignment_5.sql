@@ -6,20 +6,146 @@
   
   /*
   	Run at least six (6) of the data quality algorithms provided in the Data Qualityexample script.
-      Try to create a new query to measure a new aspect of data quality.  If you cannot figure out the SQL, do your best to summarize in English how the query might be structured.
+      Try to create a new query to measure a new aspect of data quality.  
+      
+      If you cannot figure out the SQL, do your best to summarize in English how the query might be structured.
 
   
   */
   
   
-  -- A yes or no value indicating if the provider_id in the PERSON is the expected data type based on the specification. (Threshold=0%).
-  
  	
+-- Start with OMOP Test, then use PROD
+
+  USE OMOP_PROD;
 	
-    -- I need to add a few simplier, more general SQL examples  
+
+-- The number and percent of records with a date value in the visit_end_date field of the VISIT_OCCURRENCE table that occurs after death.-- 
+ 
+
+		SELECT vo.*
+		
+		from visit_occurrence vo 
+		join  death on vo.person_id = death.person_id
+		where visit_end_date > death_date
+	
+ 
+		
+ -- The number and percent of records with a value of 0 in the standard concept field race_concept_id in the PERSON table.  
+ 
+
+	SELECT p.*		     		        
+     FROM person p
+	  WHERE race_concept_id = 0;
+		
+ 
+ 
+-- Any extreme or odd year of birth values?
+
+		SELECT year_of_birth ,
+		       count(*)
+		   FROM person p
+		     group by year_of_birth 
+		     order by year_of_birth ;
+		        
+		    
+			        
+		        
+ -- look for odd association between gender and specific types of conditions 
+
+
+   SELECT  c.concept_name,
+           p.gender_concept_id ,
+           g.concept_name as gender,
+           co.* 
+	FROM condition_occurrence co 
+      INNER JOIN  person p
+		ON co.person_id = p.person_id
+	   LEFT JOIN 
+	     concept c 
+	       on co.condition_concept_id  = c.concept_id
+	   LEFT JOIN concept g   
+	     on p.gender_concept_id  = g.concept_id 
+	      
+	 WHERE CONDITION_CONCEPT_ID=192367 
+	   AND g.concept_name = 'MALE' ;
+  
+
+ -- CONCEPT_ID 436366 (Benign neoplasm of testis), the number and percent of records associated with patients with an implausible gender (correct gender = Male).    
+	  
+	  
+   SELECT  c.concept_name,
+           p.gender_concept_id ,
+           g.concept_name as gender,
+           co.* 
+	FROM condition_occurrence co 
+      INNER JOIN  person p
+		ON co.person_id = p.person_id
+	   LEFT JOIN 
+	     concept c 
+	       on co.condition_concept_id  = c.concept_id
+	   LEFT JOIN concept g   
+	     on p.gender_concept_id  = g.concept_id 
+	      
+	 WHERE CONDITION_CONCEPT_ID=436366
+	   AND g.concept_name = 'FEMALE' ;	 
+	  
+	  
+
+	  
+	-- For a CONCEPT_ID 201801 (Primary malignant neoplasm of fallopian tube), the number and percent of records associated with patients with an implausible gender (correct gender = Female). 
+	  
+   SELECT  c.concept_name,
+           p.gender_concept_id ,
+           g.concept_name as gender,
+           co.* 
+	FROM condition_occurrence co 
+      INNER JOIN  person p
+		ON co.person_id = p.person_id
+	   LEFT JOIN 
+	     concept c 
+	       on co.condition_concept_id  = c.concept_id
+	   LEFT JOIN concept g   
+	     on p.gender_concept_id  = g.concept_id 
+	      
+	 WHERE CONDITION_CONCEPT_ID=201801
+	   AND g.concept_name = 'MALE' ;	 
+	  	 
+	  
+	  
+	  
+-- For the combination of CONCEPT_ID 3025315 (Body weight) and UNIT_CONCEPT_ID 8739 (pound (US)), 
+   -- the number and percent of records that have a value less than 4.	 
+
+
+		SELECT m.* 
+		     FROM measurement m  
+		        WHERE m.MEASUREMENT_CONCEPT_ID = 3025315
+		      AND m.unit_concept_id = 8739
+		      AND m.value_as_number IS NOT NULL
+		      AND value_as_number < 4	;
 	
 	
+-- For the combination of CONCEPT_ID 3006923 (Alanine aminotransferase [Enzymatic activity/volume] in Serum or Plasma) and UNIT_CONCEPT_ID 8554 (percent), the number and percent of records that have a value higher than 2000.     
+		     
 	
+			SELECT m.* 
+				FROM measurement   m
+				WHERE m.MEASUREMENT_CONCEPT_ID = 3006923
+				AND m.unit_concept_id = 8554
+				AND m.value_as_number IS NOT NULL
+				AND m.value_as_number > 2000	
+				  
+		     
+--  The number and percent of records with a NULL value in the visit_occurrence_id of the MEASUREMENT.		   
+		     
+
+   SELECT person_id AS violating_field, m.* 
+		FROM measurement m
+		WHERE visit_occurrence_id  IS NULL
+
+		     
+		     
 /*********
 FIELD_CDM_DATATYPE
 
@@ -42,7 +168,7 @@ FROM
 	(
 		SELECT P.provider_id AS violating_field, 
 		       P.* 
-		  FROM  PERSON P
+		  FROM  person P
 		 WHERE provider_id  = 0
 		 
 		 
@@ -50,7 +176,7 @@ FROM
 ) violated_row_count,
 ( 
 	SELECT COUNT(*) AS num_rows
-	FROM PERSON
+	FROM person
 ) denominator
 ;
   
